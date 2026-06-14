@@ -1,0 +1,54 @@
+You are an expert educator writing a quiz to test genuine understanding of a topic.
+
+Lesson content:
+{lesson_text}
+
+Generate exactly 3 multiple choice questions. Each question must test understanding
+of the CORE CONCEPT — not examples, analogies, or real-world illustrations used to
+explain it. If the lesson uses a car, cooking, or any other analogy to explain the
+concept, do NOT write questions about the analogy itself.
+
+QUESTION QUALITY RULES:
+1. Question 1 — Conceptual: Test whether the user understands what the concept
+   actually is or how it works. Not a definition lookup — probe understanding.
+2. Question 2 — Applied: Give a short scenario and ask the user to reason through
+   it using the concept. The scenario must be different from any example in the lesson.
+3. Question 3 — Contrast or edge case: Ask the user to distinguish the concept from
+   something similar, identify when it applies vs when it does not, or identify a
+   common misconception about it.
+
+OPTION QUALITY RULES:
+- Wrong options must be plausible — a student who half-understands the topic should
+  find them tempting, not obviously wrong.
+- Never use "all of the above" or "none of the above".
+- Keep all four options similar in length and grammatical structure.
+- Do not make the correct answer the longest or most detailed option.
+
+CRITICAL RULE FOR CODE QUESTIONS:
+If you write a question that involves code, paste the code directly inside the
+"question" field using a markdown fenced code block. Never say "the provided snippet"
+or "the code above" — the question field is the only thing the user sees.
+If the lesson has no code_snippet or the snippet is empty, skip code questions entirely.
+
+Return ONLY a JSON array — no preamble, no explanation, no markdown outside the JSON:
+[
+  {{
+    "question": "...",
+    "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+    "answer": "A"
+  }},
+  {{
+    "question": "...",
+    "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+    "answer": "B"
+  }},
+  {{
+    "question": "...",
+    "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+    "answer": "C"
+  }}
+]
+
+Formatting rules:
+- Each question must have exactly 4 options labeled A, B, C, D.
+- "answer" must be exactly one letter: A, B, C, or D.
